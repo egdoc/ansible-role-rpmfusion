@@ -1,0 +1,16 @@
+---
+argument_specs:
+  main:
+    author: Egidio Docile
+    options:
+      rpmfusion_enable_nonfree_repo:
+        type: bool
+        default: false
+      rpmfusion_free_repo_rpm_url:
+        type: str
+      rpmfusion_nonfree_repo_rpm_url:
+        type: str
+      rpmfusion_free_gpg_key_url:
+        type: str
+      rpmfusion_nonfree_gpg_key_url:
+        type: str

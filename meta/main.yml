@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Egidio Docile
+  namespace: egdoc
+  role_name: rpmfusion
+  description: Ansible role to enable the RPM Fusion repository
+  license: GPLv2
+  min_ansible_version: '2.1'
+  galaxy_tags:
+    - rpmfusion
+    - fedora
+    - rockylinux
+    - centos
+    - rhel
+
+dependencies: []

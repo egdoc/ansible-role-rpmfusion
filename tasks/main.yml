@@ -1,0 +1,21 @@
+---
+- name: Source distribution-specific variables
+  ansible.builtin.include_vars:
+    file: '{{ item }}'
+  with_first_found:
+    - vars/{{ ansible_facts.distribution | lower }}.yml
+    - vars/{{ ansible_facts.os_family | lower }}.yml
+
+- name: Ensure rpmfusion-free signing key is in rpm keyring
+  ansible.builtin.rpm_key:
+    key: '{{ rpmfusion_free_gpg_key_url }}'
+    state: present
+
+- name: Ensure rpmfusion-free repository is enabled
+  ansible.builtin.dnf:
+    name: '{{ rpmfusion_free_repo_rpm_url }}'
+    state: present
+
+- name: Setup RPM Fusion non-free repository
+  ansible.builtin.import_tasks: nonfree.yml
+  when: rpmfusion_enable_nonfree_repo | bool

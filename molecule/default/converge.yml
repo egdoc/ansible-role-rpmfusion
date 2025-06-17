@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  pre_tasks:
+    - name: Ensure gnupg2 is installed
+      ansible.builtin.dnf:
+        name: gnupg2
+        state: present
+
+  roles:
+    - role: egdoc.rpmfusion
+      rpmfusion_enable_nonfree_repo: true

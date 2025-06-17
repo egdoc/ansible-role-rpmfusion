@@ -1,0 +1,10 @@
+---
+- name: Ensure rpmfusion-nonfree signing key is in rpm keyring
+  ansible.builtin.rpm_key:
+    key: '{{ rpmfusion_nonfree_gpg_key_url }}'
+    state: present
+
+- name: Ensure rpmfusion-nonfree repository is enabled
+  ansible.builtin.dnf:
+    name: '{{ rpmfusion_nonfree_repo_rpm_url }}'
+    state: present
